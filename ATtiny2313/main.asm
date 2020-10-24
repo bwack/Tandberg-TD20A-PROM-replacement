@@ -147,6 +147,7 @@ add_table_offset:
 	andi	tmp, 0xe0
 	lsr	tmp
 	swap	tmp
+	ori	tmp, (1<<G1_N)||(1<<G2_N) ; maintain pull-ups
 	out	PORTB, tmp
 
 	rjmp loop;
