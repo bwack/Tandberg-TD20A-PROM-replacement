@@ -33,9 +33,13 @@
 
 .def tmp	= r16
 .def tmp2	= r17
-.def offset	= r18
-.def output     = r19
-.def input      = r20
+.def output     = r18
+.def input      = r19
+
+.def loopCt	= r20		; delay loop count
+.def loopCt2	= r21		; adc loop count
+.def iLoopRl	= r24		; inner loop register low
+.def iLoopRh	= r25		; inner loop register high
 
 .dseg
 .org	SRAM_START
@@ -98,11 +102,11 @@ loop:
 
 	clr	input
 	in	tmp, PINA
-	sbrc	tmp, 0
+	sbrc	tmp, A4
 	ori	input, 0b00010000
-	sbrc	tmp, 1
+	sbrc	tmp, A3
 	ori	input, 0b00001000
-	sbrc	tmp, 2
+	sbrc	tmp, A0
 	ori	input, 0b00000001
 
 	in	tmp, PINB
@@ -147,7 +151,34 @@ add_table_offset:
 	andi	tmp, 0xe0
 	lsr	tmp
 	swap	tmp
-	ori	tmp, (1<<G1_N)||(1<<G2_N) ; maintain pull-ups
+	ori	tmp, (1<<G1_N)|(1<<G2_N) ; maintain pull-ups
 	out	PORTB, tmp
 
-	rjmp loop;
+ 	; ldi	iloopRl, LOW(100)
+ 	; ldi	iloopRh, HIGH(100)
+ 	; rcall	delay_ms
+	; ldi	tmp, 1
+	; add	output, tmp
+
+	rjmp loop
+
+delay_ms:
+.equ delayconst = 80
+.equ delayconst2 = 2
+	push 	tmp
+	push 	tmp2
+	ldi	tmp, delayconst
+	ldi	tmp2, delayconst2
+_delay_ms:
+	dec	tmp
+	brne	_delay_ms
+	ldi	tmp, delayconst
+	dec	tmp2
+	brne	_delay_ms
+	ldi	tmp2, delayconst2
+
+ 	sbiw	iloopRl,1
+	brne	_delay_ms
+	pop	tmp2
+	pop	tmp
+	ret
