@@ -7,6 +7,13 @@ ROM dumps by Knut Baardsen. RIP. You will always be missed.
 
 Cut pin15 for 15 IPS, ground pin15 for 7.5 IPS
 
-Project under construction.
-Waiting for ATtiny2313 and the prototype PCBs.
+This project was successful. A chip is now installed in a real product that needed repair.
+You can see all about it in these two videos:
 
+Programming video:
+
+https://www.youtube.com/watch?v=v1Pzl6MGUO8
+
+TD20 update video showing the chip in action:
+
+https://www.youtube.com/watch?v=RYnCFkmXLnY
