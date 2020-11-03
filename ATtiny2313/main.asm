@@ -5,7 +5,11 @@
 ; Cut pin15 for 15 IPS, ground pin15 for 7.5 IPS
 
 .nolist
+.ifdef ATTINY2313
 .include "tn2313def.inc"
+.else
+.include "tn2313Adef.inc"
+.endif
 .list
 
 ; inputs

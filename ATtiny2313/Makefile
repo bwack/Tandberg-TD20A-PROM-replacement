@@ -18,7 +18,8 @@ ASFLAGS=-I /usr/local/include/avr
 #SRCS = main.asm
 
 all:
-	${AS} ${ASFLAGS} -o ${TARGET}_${MCU}.hex -D 75IPS=1 main.asm
+	${AS} ${ASFLAGS} -o ${TARGET}_${MCU}.hex -D ATTINY2313 main.asm
+	${AS} ${ASFLAGS} -o ${TARGET}_${MCU}A.hex -D ATTINY2313A main.asm
 
 flash: all
 	${AVRDUDE} -p ${MCU} -c usbasp -B${SPEED} -U flash:w:${TARGET}_${MCU}.hex:i -F -P usb
