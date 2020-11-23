@@ -20,8 +20,9 @@ minipro -p ATTINY2313 -c config -w tda20_prom_attiny2313.fuses
 
 ## YouTube videos:
 
-https://www.youtube.com/watch?v=v1Pzl6MGUO8
+[![videothumb](http://i3.ytimg.com/vi/v1Pzl6MGUO8/0.jpg)](http://www.youtube.com/watch?v=v1Pzl6MGUO8 "Creating a PROM replacement using ATTiny2313 and the AVRA Macro Assembler - Tandberg TD20A PROM IC")
 
 TD20 update video showing the chip in action:
 
-https://www.youtube.com/watch?v=RYnCFkmXLnY
+[![videothumb](http://i3.ytimg.com/vi/RYnCFkmXLnY/0.jpg)](http://www.youtube.com/watch?v=RYnCFkmXLnY "Tandberg TD 20A update and ATtiny1606 breakout boards (soldering video)")
+
